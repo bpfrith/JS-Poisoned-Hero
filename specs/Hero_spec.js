@@ -1,10 +1,13 @@
 var assert = require("assert");
 var Hero = require("../Hero");
+var Food = require("../Food")
 
 describe("hero", function() {
 
   beforeEach(function(){
    sean = new Hero("Sir Sean of Literature", 80, "Lasagne");
+   chianti = new Food("Chianti", 5);
+   lasagne = new Food("Lasagne", 20)
  });
 
   it("should have a name", function(){
@@ -22,4 +25,15 @@ describe("hero", function() {
   it("should talk", function() {
     assert.equal("Behold, I am the great Sir Sean of Literature", sean.talk());
   });
+
+  it('should be able to consume food', function(){
+    assert.equal(85, sean.consume(chianti));
+  });
+  it('health should go up by 1.5 * value, If the food is their favourite food.', function(){
+    assert.equal(110, sean.consume(lasagne))
+  });
+  // it('should lose health, if it eats poisoned food', function(){
+  //   ratty.touch(chicken)
+  //   assert.equal(30, sean.consume(lasagne))
+  // });
 });

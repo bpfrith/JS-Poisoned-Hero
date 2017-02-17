@@ -3,4 +3,14 @@ var Food = function(name, replenish) {
   this.replenish = replenish;
 };
 
+Food.prototype = {
+    tarnish: function(){
+    this.replenish = (this.replenish * 0.5);
+    return this.replenish
+  },
+    poisoned: function(){
+    this.poison = true;
+  }
+}
+
 module.exports = Food;
